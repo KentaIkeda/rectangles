@@ -33,4 +33,5 @@ fn main() {
 fn area(rectangle: &Rectangle) -> u32 {
     // 構造体を使用したことで、どっちが何なのか分かりやすくなった
     rectangle.width * rectangle.height
+    // daily
 }
