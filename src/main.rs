@@ -1,7 +1,21 @@
 // 分かりやすくするために構造体を作成する
+#[derive(Debug)] // 構造体をデバッグする為に必要な記述
 struct Rectangle {
     width: u32,
     height: u32
+}
+
+// 構造体のメソッド定義
+impl Rectangle {
+    // メソッドの最初の引数は必ずselfである必要がある
+    // このselfはメソッドが呼び出されている構造体のインスタンスを表している
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+
+    fn can_hold(&self, other: &Rectangle) -> bool {
+        self.width > other.width && self.height > other.height
+    }
 }
 
 fn main() {
@@ -15,6 +29,9 @@ fn main() {
         "The area of the rectangle is {} square pixels.",
         area(&rect2)
     );
+
+    // :?を書くとDebugと呼ばれる出力生計を使いたいとコンパイラーに指示をしてくれる
+    println!("{:?}", rect2);
 }
 
 // 四角形の面積を計算する関数
@@ -33,5 +50,4 @@ fn main() {
 fn area(rectangle: &Rectangle) -> u32 {
     // 構造体を使用したことで、どっちが何なのか分かりやすくなった
     rectangle.width * rectangle.height
-    // daily
 }
